@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piyush Omer | Software Development Engineer</title>
+    <!-- Modern Fonts: Playfair Display for headings, Inter for body, Fira Code for code -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for clean icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Sophisticated Modern Editorial Theme */
+        :root {
+            --bg-color: #111111; /* Deep Professional Dark */
+            --bg-card: #1e1e1e; /* Lighter dark for cards and depth */
+            --text-primary: #f5f5f5; /* Bright, clean light */
+            --text-secondary: #b0b0b0; /* Muted text for descriptions */
+            --accent-color: #d1b272; /* Subtle sepia/gold tone from original */
+            --accent-hover: #e0ca9e; /* Brighter gold for hover */
+            --border-color: #333333; /* Subtle borders */
+            --font-heading: 'Playfair Display', serif;
+            --font-main: 'Inter', sans-serif;
+            --font-code: 'Fira Code', monospace;
+            --container-max-width: 1000px;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Headings */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-family: var(--font-main);
+            font-weight: 600;
+        }
+
+        /* Generic Text Styles */
+        p {
+            color: var(--text-secondary);
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Header Section with Photo */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .header-photo-container {
+            flex: 0 0 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transition: transform 0.4s ease;
+        }
+
+        header img:hover {
+            transform: scale(1.05);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(209, 178, 114, 0.4);
+        }
+
+        .resume-btn:hover {
+            background-color: var(--accent-hover);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section with Badges and Icons */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .skill-category h3 {
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .skill-category h3 i {
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-list li {
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            background-color: rgba(209, 178, 114, 0.1);
+            border: 1px solid var(--accent-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin: 0;
+        }
+
+        /* Projects Section with Cards */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(209, 178, 114, 0.15);
+        }
+
+        .project-meta {
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .project-meta i {
+            font-size: 1rem;
+        }
+
+        .project-card ul {
+            flex: 1; /* Pushes live link to bottom if description is short */
+            margin-bottom: 25px;
+        }
+
+        .live-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--bg-color);
+            background-color: var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            align-self: flex-start;
+            transition: background-color 0.3s ease;
+        }
+
+        .live-link-btn:hover {
+            background-color: var(--accent-hover);
+            color: var(--bg-color);
+        }
+
+        /* Achievements Section with Cards */
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        .achievement-card {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(209, 178, 114, 0.1);
+        }
+
+        .achievement-icon {
+            flex: 0 0 50px;
+            height: 50px;
+            background-color: rgba(209, 178, 114, 0.15);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid var(--accent-color);
+            margin-top: 5px;
+        }
+
+        .achievement-icon i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .achievement-content {
+            flex: 1;
+        }
+
+        .achievement-card strong {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Leadership Section with Cards */
+        .leadership-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        .leadership-card {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .leadership-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(209, 178, 114, 0.1);
+        }
+
+        .leadership-card p {
+            flex: 1; /* Pushes role title to bottom if desc is short */
+            color: var(--text-secondary);
+        }
+
+        /* Education Details */
+        .education-item {
+            margin-bottom: 25px;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 20px;
+        }
+
+        /* Footer Constraints */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(163, 159, 150, 0.1);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Tablet & Mobile Responsiveness */
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                padding-bottom: 20px;
+            }
+
+            .header-photo-container {
+                flex: 0 0 auto;
+                order: -1;
+            }
+
+            header h1 {
+                font-size: 2.8rem;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .resume-btn {
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-info {
+                gap: 10px;
+                font-size: 0.9rem;
+            }
+
+            .projects-container,
+            .achievements-container,
+            .leadership-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Header Section with Photo -->
+        <header>
+            <div class="header-content">
+                <h1>Piyush Omer</h1>
+                <p class="subtitle">Software Development Engineer | C++ & Full-Stack Developer</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kanpur, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:piyushoff1411@gmail.com">piyushoff1411@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 7307062619</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/piyushomer1411" target="_blank">linkedin.com/in/piyushomer1411</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/Piyush-1411" target="_blank">github.com/Piyush-1411</a>
+                    </div>
+                </div>
+                <!-- Link to your resume file verbatim -->
+                <a href="Resume_New.pdf" class="resume-btn" download>
+                    <i class="fas fa-download"></i>
+                    <span>Download Resume</span>
+                </a>
+            </div>
+            <div class="header-photo-container">
+                <!-- Using the specified photo file verbatim -->
+                <img src="photo_2025-10-12 18.10.05.jpeg" alt="Piyush Omer">
+            </div>
+        </header>
+
+        <!-- Technical Skills Section (Updated to Badges/Icons) -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Languages</h3>
+                    <ul class="skill-list">
+                        <li>C/C++</li>
+                        <li>SQL</li>
+                        <li>JavaScript</li>
+                        <li>HTML/CSS</li>
+                        <li>Python</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Frameworks & Databases</h3>
+                    <ul class="skill-list">
+                        <li>Django</li>
+                        <li>STL</li>
+                        <li>Bootstrap</li>
+                        <li>SQLite</li>
+                        <li>MySQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & Concepts</h3>
+                    <ul class="skill-list">
+                        <li>Git/GitHub</li>
+                        <li>VS Code</li>
+                        <li>Jupyter Notebook</li>
+                        <li>Django Templates</li>
+                        <li>DOM Manipulation</li>
+                        <li>DSA</li>
+                        <li>OOPs</li>
+                        <li>Team Collaboration</li>
+                        <li>Leadership</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section (Updated to Cards) -->
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            
+            <div class="projects-container">
+                <div class="project-card">
+                    <h3>Your Blog (Full-Stack Platform)</h3>
+                    <p class="subtitle">PythonAnywhere</p>
+                    <div class="project-meta">
+                        <i class="fas fa-tags"></i>
+                        <span>Python, Django, HTML, CSS, SQLite</span>
+                    </div>
+                    <ul>
+                        <li>Developed a robust full-stack blogging platform with CRUD operations, secure user authentication, and SEO-friendly URLs.</li>
+                        <li>Optimized backend workflows using Django Models, Forms, and Admin Interface.</li>
+                        <li>Integrated interactive features: Read Later bookmarks, dynamic comment section, and personalized content delivery.</li>
+                    </ul>
+                    <a href="https://github.com/Piyush-1411/YourBlog" class="live-link-btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        Live Link
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Quizzify (Interactive Web App)</h3>
+                    <p class="subtitle">Web-based</p>
+                    <div class="project-meta">
+                        <i class="fas fa-tags"></i>
+                        <span>HTML, CSS, JavaScript, Open Trivia DB API</span>
+                    </div>
+                    <ul>
+                        <li>Built an interactive quiz app with real-time question loading, answer validation, and dynamic scoring.</li>
+                        <li>Applied modern front-end architecture using reusable components and maintainable code.</li>
+                        <li>Engineered a fully mobile-responsive design ensuring cross-browser compatibility.</li>
+                    </ul>
+                    <a href="https://github.com/Piyush-1411/Quizzify" class="live-link-btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        Live Link
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Maulana Azad National Institute of Technology, Bhopal</h3>
+                <p>B.Tech in Electronics and Communication Engineering | <strong>CGPA: 8.94</strong></p>
+            </div>
+            <div class="education-item">
+                <h3>Dr. Virendra Swarup Education Centre, Kanpur</h3>
+                <p>High School and Intermediate | <strong>ISC (2023): 92.50% | ICSE (2021): 97.80%</strong></p>
+            </div>
+        </section>
+
+        <!-- Achievements Section (Updated to Cards) -->
+        <section id="achievements">
+            <h2>Achievements</h2>
+            <div class="achievements-container">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <p><strong>Hackathon Finalist:</strong> Ranked Top 15 out of 1000+ teams nationally in the All India National Cybersecurity Hackathon by Central Bank of India.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <p><strong>CodeChef Global Rank 606</strong> in Starters 163 out of 14,000+ participants.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <p>Solved over <strong>450+ coding problems</strong> across LeetCode, Codeforces, and GFG, and over <strong>300+ on LeetCode</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <p><strong>1st Runner-Up (2nd Place)</strong> out of 50+ participants in an inter-college quiz competition hosted by Tourism of India.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Section (Updated to Cards) -->
+        <section id="leadership">
+            <h2>Leadership & Community</h2>
+            <div class="leadership-container">
+                <div class="leadership-card">
+                    <h3>Quizzers' Club MANIT</h3>
+                    <p>Organized over 10 campus-wide events, coordinating logistics for 500+ participants and represented MANIT nationally, securing Top 3 positions.</p>
+                    <h4>Quizmaster Lead</h4>
+                    <p class="subtitle">May 2024 – Present</p>
+                </div>
+                
+                <div class="leadership-card">
+                    <h3>Zenith Programming Club</h3>
+                    <p>Participated in weekly coding meetups focused on DSA and Dynamic Programming; collaborated on competitive programming problems.</p>
+                    <h4>Technical Member</h4>
+                    <p class="subtitle">April 2024 – Present</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Piyush Omer | Aspiring Software Development Engineer | Kanpur, India</p>
+        <p>This portfolio is powered by the provided user data and photo. &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
